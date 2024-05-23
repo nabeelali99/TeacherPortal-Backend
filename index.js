@@ -19,7 +19,6 @@ const mongoDBURL = process.env.MONGODB_URL;
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -28,6 +27,8 @@ app.use(
 );
 
 app.use(cookieParser());
+
+// connect to database
 
 mongoose
   .connect(mongoDBURL)
@@ -211,7 +212,3 @@ app.get("/students/:id", async (req, res) => {
     return res.status(500).send({ message: err.message });
   }
 });
-
-// app.listen(4000, () => {
-//   console.log("Server running on port 4000");
-// });
