@@ -19,10 +19,10 @@ const mongoDBURL = process.env.MONGODB_URL;
 app.use(express.json());
 app.use(
   cors({
+    origin: true,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    accessControlAllowOrigin: true,
   })
 );
 
