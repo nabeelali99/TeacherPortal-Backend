@@ -84,12 +84,14 @@ app.post("/login", async (req, res) => {
       {},
       (err, token) => {
         if (err) throw err;
-        res.cookie("token", token).json({
+        res
+          .cookie("token", token,{
+            sameSite: "none",
+          })
+          .json({
           id: user._id,
           username,
-        },
-        {sameSite: "none"}                               
-      );
+        });
       }
     );
   } else {
