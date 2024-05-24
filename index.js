@@ -87,7 +87,9 @@ app.post("/login", async (req, res) => {
         res.cookie("token", token).json({
           id: user._id,
           username,
-        });
+        },
+        {sameSite: "none"}                               
+      );
       }
     );
   } else {
